@@ -99,5 +99,10 @@ process:
     with:
       - type: payload
         data: FORWARD
+  - object: player
+    call: action
+    with:
+      - type: payload
+        data: TURN_LEFT
   - object: world
     call: print2D
