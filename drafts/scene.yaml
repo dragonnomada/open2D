@@ -41,7 +41,7 @@ stages:
     call: putState
     with:
       - type: payload
-        data: UP
+        data: LEFT
   - object: player_2
     call: setController2D
     with: 
@@ -70,17 +70,22 @@ stages:
     name: player_1
     action: FORWARD
   - pipeline: PLAYER_ACTION
-    name: player_1
+    name: player_2
     action: FORWARD
+
   - pipeline: PLAYER_ACTION
     name: player_1
     action: FORWARD
-  - object: world
-    call: print2D
-    # with:
-    #   - type: payload
-    #     data:
-    #       clear: false
+  - pipeline: PLAYER_ACTION
+    name: player_2
+    action: TURN_LEFT
+
+  - pipeline: PLAYER_ACTION
+    name: player_1
+    action: FORWARD
+  - pipeline: PLAYER_ACTION
+    name: player_2
+    action: BACKWARD
 
 pipelines:
   - name: PLAYER_ACTION
@@ -92,6 +97,10 @@ pipelines:
             data: $action
       - object: world
         call: print2D
+        with:
+          - type: payload
+            data:
+              clear: TRUE
       - object: this
         call: pause
         with: 
