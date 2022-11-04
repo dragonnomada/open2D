@@ -11,25 +11,25 @@ objects:
     source: drafts/player_controller.yaml
 
 stages:
-  - object: world
-    call: describe
-  - object: world
-    call: log
-  - object: player
-    call: describe
-  - object: player
-    call: log
-  - object: player_controller
-    call: describe
-  - object: player_controller
-    call: log
+  # - object: world
+  #   call: describe
+  # - object: world
+  #   call: log
+  # - object: player
+  #   call: describe
+  # - object: player
+  #   call: log
+  # - object: player_controller
+  #   call: describe
+  # - object: player_controller
+  #   call: log
   - object: player
     call: setController2D
     with: 
       - type: object
         name: player_controller
-  - object: player
-    call: log
+  # - object: player
+  #   call: log
   - object: world
     call: addItem2D
     with: 
@@ -39,12 +39,12 @@ stages:
         data:
           row: 0
           column: 0
-  - object: world
-    call: log
-  - object: player
-    call: log
-  - object: world
-    call: print2D
+  # - object: world
+  #   call: log
+  # - object: player
+  #   call: log
+  # - object: world
+  #   call: print2D
   - object: player
     call: putState
     with:
@@ -55,89 +55,124 @@ stages:
   #   with: 
   #     - type: payload
   #       data: 5000
+  # - object: world
+  #   call: print2D
+  # %%% ACTIONS %%%
+  # - object: player
+  #   call: action
+  #   with:
+  #     - type: payload
+  #       data: FORWARD
+  # - object: world
+  #   call: print2D
+  # - object: player
+  #   call: action
+  #   with:
+  #     - type: payload
+  #       data: FORWARD
+  # - object: player
+  #   call: action
+  #   with:
+  #     - type: payload
+  #       data: FORWARD
+  # - object: player
+  #   call: action
+  #   with:
+  #     - type: payload
+  #       data: FORWARD
+  # - object: player
+  #   call: action
+  #   with:
+  #     - type: payload
+  #       data: FORWARD
+  # - object: player
+  #   call: action
+  #   with:
+  #     - type: payload
+  #       data: FORWARD
+  # - object: player
+  #   call: action
+  #   with:
+  #     - type: payload
+  #       data: FORWARD
+  # - object: player
+  #   call: action
+  #   with:
+  #     - type: payload
+  #       data: FORWARD
+  # - object: player
+  #   call: action
+  #   with:
+  #     - type: payload
+  #       data: TURN_RIGHT
+  # - object: player
+  #   call: action
+  #   with:
+  #     - type: payload
+  #       data: FORWARD
+  # - object: player
+  #   call: action
+  #   with:
+  #     - type: payload
+  #       data: FORWARD
+  # - object: player
+  #   call: action
+  #   with:
+  #     - type: payload
+  #       data: FORWARD
+  # - object: player
+  #   call: action
+  #   with:
+  #     - type: payload
+  #       data: TURN_LEFT
+  # - object: player
+  #   call: action
+  #   with:
+  #     - type: payload
+  #       data: BACKWARD
+  # - object: player
+  #   call: action
+  #   with:
+  #     - type: payload
+  #       data: BACKWARD
+  # - object: player
+  #   call: action
+  #   with:
+  #     - type: payload
+  #       data: BACKWARD
   - object: world
     call: print2D
-  - object: player
-    call: action
-    with:
+  - object: this
+    call: pause
+    with: 
       - type: payload
-        data: FORWARD
+        data: 1000
+  # %%% ACTION PIPELINE %%%
+  - pipeline: PLAYER_ACTION
+    action: FORWARD
+  - pipeline: PLAYER_ACTION
+    action: FORWARD
+  - pipeline: PLAYER_ACTION
+    action: FORWARD
   - object: world
     call: print2D
-  - object: player
-    call: action
-    with:
-      - type: payload
-        data: FORWARD
-  - object: player
-    call: action
-    with:
-      - type: payload
-        data: FORWARD
-  - object: player
-    call: action
-    with:
-      - type: payload
-        data: FORWARD
-  - object: player
-    call: action
-    with:
-      - type: payload
-        data: FORWARD
-  - object: player
-    call: action
-    with:
-      - type: payload
-        data: FORWARD
-  - object: player
-    call: action
-    with:
-      - type: payload
-        data: FORWARD
-  - object: player
-    call: action
-    with:
-      - type: payload
-        data: FORWARD
-  - object: player
-    call: action
-    with:
-      - type: payload
-        data: TURN_RIGHT
-  - object: player
-    call: action
-    with:
-      - type: payload
-        data: FORWARD
-  - object: player
-    call: action
-    with:
-      - type: payload
-        data: FORWARD
-  - object: player
-    call: action
-    with:
-      - type: payload
-        data: FORWARD
-  - object: player
-    call: action
-    with:
-      - type: payload
-        data: TURN_LEFT
-  - object: player
-    call: action
-    with:
-      - type: payload
-        data: BACKWARD
-  - object: player
-    call: action
-    with:
-      - type: payload
-        data: BACKWARD
-  - object: player
-    call: action
-    with:
-      - type: payload
-        data: BACKWARD
-  - object: world
-    call: print2D
+    # with:
+    #   - type: payload
+    #     data:
+    #       clear: false
+
+pipelines:
+  - name: PLAYER_ACTION
+    stages:
+      - object: player
+        call: action
+        with:
+          - type: payload
+            data: $action
+      - object: world
+        call: print2D
+      - object: this
+        call: pause
+        with: 
+          - type: payload
+            data: 1000
