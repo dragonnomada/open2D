@@ -103,6 +103,21 @@ process:
     call: action
     with:
       - type: payload
-        data: TURN_LEFT
+        data: TURN_RIGHT
+  - object: player
+    call: action
+    with:
+      - type: payload
+        data: FORWARD
+  - object: player
+    call: action
+    with:
+      - type: payload
+        data: FORWARD
+  - object: player
+    call: action
+    with:
+      - type: payload
+        data: FORWARD
   - object: world
     call: print2D
