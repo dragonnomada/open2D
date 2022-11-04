@@ -50,10 +50,54 @@ process:
     with:
       - type: payload
         data: RIGHT
-  - object: this
-    call: pause
-    with: 
+  # - object: this
+  #   call: pause
+  #   with: 
+  #     - type: payload
+  #       data: 5000
+  - object: world
+    call: print2D
+  - object: player
+    call: action
+    with:
       - type: payload
-        data: 5000
+        data: FORWARD
+  - object: world
+    call: print2D
+  - object: player
+    call: action
+    with:
+      - type: payload
+        data: FORWARD
+  - object: player
+    call: action
+    with:
+      - type: payload
+        data: FORWARD
+  - object: player
+    call: action
+    with:
+      - type: payload
+        data: FORWARD
+  - object: player
+    call: action
+    with:
+      - type: payload
+        data: FORWARD
+  - object: player
+    call: action
+    with:
+      - type: payload
+        data: FORWARD
+  - object: player
+    call: action
+    with:
+      - type: payload
+        data: FORWARD
+  - object: player
+    call: action
+    with:
+      - type: payload
+        data: FORWARD
   - object: world
     call: print2D
