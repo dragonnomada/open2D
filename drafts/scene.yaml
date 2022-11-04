@@ -1,6 +1,6 @@
 type: Scene2D
 
-instances:
+objects:
   - name: world
     source: drafts/world.yaml
 
@@ -11,7 +11,7 @@ instances:
     source: drafts/player_controller.yaml
 
 process:
-  - from: world
-    call: log
-  - from: world
+  - object: world
     call: describe
+  - object: world
+    call: log
