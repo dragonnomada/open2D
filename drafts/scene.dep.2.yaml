@@ -16,20 +16,46 @@ objects:
 
 stages:
   # PLAYER 1
-  - pipeline: SET_PLAYER
-    name: player_1
-    controller: player_controller_1
-    state: RIGHT
-    row: 0
-    column: 0
+  - object: player_1
+    call: putState
+    with:
+      - type: payload
+        data: RIGHT
+  - object: player_1
+    call: setController2D
+    with: 
+      - type: object
+        name: player_controller_1
+  - object: world
+    call: addItem2D
+    with: 
+      - type: object
+        name: player_1
+      - type: payload
+        data:
+          row: 0
+          column: 0
   
   # PLAYER 2
-  - pipeline: SET_PLAYER
-    name: player_2
-    controller: player_controller_2
-    state: UP
-    row: 4
-    column: 4
+  - object: player_2
+    call: putState
+    with:
+      - type: payload
+        data: LEFT
+  - object: player_2
+    call: setController2D
+    with: 
+      - type: object
+        name: player_controller_2
+  - object: world
+    call: addItem2D
+    with: 
+      - type: object
+        name: player_2
+      - type: payload
+        data:
+          row: 4
+          column: 4
   
   - object: world
     call: print2D
@@ -69,7 +95,7 @@ pipelines:
         call: putState
         with:
           - type: payload
-            data: $state
+            data: RIGHT
       - object: $name
         call: setController2D
         with: 
