@@ -13,3 +13,15 @@ actions:
   - TURN_RIGHT
   - FORWARD
   - BACKWARD
+
+symbols:
+  - state: null
+    symbol: '*'
+  - state: UP
+    symbol: '^'
+  - state: LEFT
+    symbol: '<'
+  - state: DOWN
+    symbol: 'v'
+  - state: RIGHT
+    symbol: '>'

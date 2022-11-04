@@ -24,9 +24,22 @@ process:
   - object: player_controller
     call: log
   - object: player
-    call: addController
+    call: addController2D
     with: 
       - type: object
         name: player_controller
+  - object: player
+    call: log
+  - object: world
+    call: addItem2D
+    with: 
+      - type: object
+        name: player
+      - type: payload
+        data:
+          row: 0
+          column: 0
+  - object: world
+    call: log
   - object: player
     call: log
