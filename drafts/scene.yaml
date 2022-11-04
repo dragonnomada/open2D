@@ -31,13 +31,8 @@ stages:
     row: 4
     column: 4
   
-  - object: world
-    call: print2D
-  - object: this
-    call: pause
-    with: 
-      - type: payload
-        data: 1000
+  - pipeline: PRINT_WORLD
+    delay: 5000
 
   # %%% ACTION PIPELINE %%%
   - pipeline: PLAYER_ACTION
@@ -62,7 +57,17 @@ stages:
     action: BACKWARD
 
 pipelines:
-  # STAGE: SET_PLAYER
+  # PIPE: PRINT_WORLD
+  - name: PRINT_WORLD
+    stages:
+      - object: world
+        call: print2D
+      - object: this
+        call: pause
+        with: 
+          - type: payload
+            data: $delay
+  # PIPE: SET_PLAYER
   - name: SET_PLAYER
     stages:
       - object: $name
@@ -84,7 +89,7 @@ pipelines:
             data:
               row: $row
               column: $column
-  # STAGE: PLAYER_ACTION
+  # PIPE: PLAYER_ACTION
   - name: PLAYER_ACTION
     stages:
       - object: $name
