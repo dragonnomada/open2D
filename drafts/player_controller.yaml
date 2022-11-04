@@ -1,0 +1,109 @@
+type: Controller2D
+
+item: PLAYER
+
+controllers:
+  - action: TURN_LEFT
+    conditions:
+      - when:
+          state: UP
+        next:
+          state: LEFT
+      - when:
+          state: LEFT
+        next:
+          state: DOWN
+      - when:
+          state: DOWN
+        next:
+          state: RIGHT
+      - when:
+          state: RIGHT
+        next:
+          state: UP
+  - action: TURN_RIGHT
+    conditions:
+      - when:
+          state: UP
+        next:
+          state: RIGHT
+      - when:
+          state: LEFT
+        next:
+          state: UP
+      - when:
+          state: DOWN
+        next:
+          state: LEFT
+      - when:
+          state: RIGHT
+        next:
+          state: DOWN
+  - action: FORWARD
+    conditions:
+      - when:
+          and:
+            - state: UP
+            - index:
+                row: "@row - 1 is EMPTY"
+        next:
+          index:
+            row: "@row - 1"
+      - when:
+          and:
+            - state: LEFT
+            - index:
+              column: "@column - 1 is EMPTY"
+        next:
+          index:
+            column: "@column - 1"
+      - when:
+          and:
+            - state: DOWN
+            - index:
+                row: "@row + 1 is EMPTY"
+        next:
+          index:
+            row: "@row + 1"
+      - when:
+          and:
+            - state: RIGHT
+            - index:
+                column: "@column + 1 is EMPTY"
+        next:
+          index:
+            column: "@column + 1"
+  - action: BACKWARD
+    conditions:
+      - when:
+          and:
+            - state: UP
+            - index:
+                row: "@row + 1 is EMPTY"
+        next:
+          index:
+            row: "@row + 1"
+      - when:
+          and:
+            - state: LEFT
+            - index:
+                column: "@column + 1 is EMPTY"
+        next:
+          index:
+            column: "@column + 1"
+      - when:
+          and:
+            - state: DOWN
+            - index:
+                row: "@row - 1 is EMPTY"
+        next:
+          index:
+            row: "@row - 1"
+      - when:
+          and:
+            - state: RIGHT
+            - index:
+                column: "@column - 1 is EMPTY"
+        next:
+          index:
+            column: "@column - 1"

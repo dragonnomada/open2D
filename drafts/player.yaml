@@ -1,0 +1,15 @@
+type: Item2D
+
+name: PLAYER
+
+states:
+  - UP
+  - LEFT
+  - DOWN
+  - RIGHT
+
+actions:
+  - TURN_LEFT
+  - TURN_RIGHT
+  - FORWARD
+  - BACKWARD

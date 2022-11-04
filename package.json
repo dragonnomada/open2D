@@ -1,0 +1,23 @@
+{
+  "name": "open2d",
+  "version": "1.0.0",
+  "description": "An Open 2D Simulator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dragonnomada/open2D.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dragonnomada/open2D/issues"
+  },
+  "homepage": "https://github.com/dragonnomada/open2D#readme",
+  "dependencies": {
+    "yaml": "^2.1.3"
+  }
+}

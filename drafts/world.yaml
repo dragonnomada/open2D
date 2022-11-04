@@ -1,0 +1,6 @@
+type: Matrix2D
+
+name: WORLD
+
+rows: 8
+columns: 8
