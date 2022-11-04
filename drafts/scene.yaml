@@ -4,142 +4,59 @@ objects:
   - name: world
     source: drafts/world.yaml
 
-  - name: player
+  - name: player_1
     source: drafts/player.yaml
-
-  - name: player_controller
+  - name: player_controller_1
+    source: drafts/player_controller.yaml
+  
+  - name: player_2
+    source: drafts/player.yaml
+  - name: player_controller_2
     source: drafts/player_controller.yaml
 
 stages:
-  # - object: world
-  #   call: describe
-  # - object: world
-  #   call: log
-  # - object: player
-  #   call: describe
-  # - object: player
-  #   call: log
-  # - object: player_controller
-  #   call: describe
-  # - object: player_controller
-  #   call: log
-  - object: player
-    call: setController2D
-    with: 
-      - type: object
-        name: player_controller
-  # - object: player
-  #   call: log
-  - object: world
-    call: addItem2D
-    with: 
-      - type: object
-        name: player
-      - type: payload
-        data:
-          row: 0
-          column: 0
-  # - object: world
-  #   call: log
-  # - object: player
-  #   call: log
-  # - object: world
-  #   call: print2D
-  - object: player
+  # PLAYER 1
+  - object: player_1
     call: putState
     with:
       - type: payload
         data: RIGHT
-  # - object: this
-  #   call: pause
-  #   with: 
-  #     - type: payload
-  #       data: 5000
-  # - object: world
-  #   call: print2D
-  # %%% ACTIONS %%%
-  # - object: player
-  #   call: action
-  #   with:
-  #     - type: payload
-  #       data: FORWARD
-  # - object: world
-  #   call: print2D
-  # - object: player
-  #   call: action
-  #   with:
-  #     - type: payload
-  #       data: FORWARD
-  # - object: player
-  #   call: action
-  #   with:
-  #     - type: payload
-  #       data: FORWARD
-  # - object: player
-  #   call: action
-  #   with:
-  #     - type: payload
-  #       data: FORWARD
-  # - object: player
-  #   call: action
-  #   with:
-  #     - type: payload
-  #       data: FORWARD
-  # - object: player
-  #   call: action
-  #   with:
-  #     - type: payload
-  #       data: FORWARD
-  # - object: player
-  #   call: action
-  #   with:
-  #     - type: payload
-  #       data: FORWARD
-  # - object: player
-  #   call: action
-  #   with:
-  #     - type: payload
-  #       data: FORWARD
-  # - object: player
-  #   call: action
-  #   with:
-  #     - type: payload
-  #       data: TURN_RIGHT
-  # - object: player
-  #   call: action
-  #   with:
-  #     - type: payload
-  #       data: FORWARD
-  # - object: player
-  #   call: action
-  #   with:
-  #     - type: payload
-  #       data: FORWARD
-  # - object: player
-  #   call: action
-  #   with:
-  #     - type: payload
-  #       data: FORWARD
-  # - object: player
-  #   call: action
-  #   with:
-  #     - type: payload
-  #       data: TURN_LEFT
-  # - object: player
-  #   call: action
-  #   with:
-  #     - type: payload
-  #       data: BACKWARD
-  # - object: player
-  #   call: action
-  #   with:
-  #     - type: payload
-  #       data: BACKWARD
-  # - object: player
-  #   call: action
-  #   with:
-  #     - type: payload
-  #       data: BACKWARD
+  - object: player_1
+    call: setController2D
+    with: 
+      - type: object
+        name: player_controller_1
+  - object: world
+    call: addItem2D
+    with: 
+      - type: object
+        name: player_1
+      - type: payload
+        data:
+          row: 0
+          column: 0
+  
+  # PLAYER 2
+  - object: player_2
+    call: putState
+    with:
+      - type: payload
+        data: UP
+  - object: player_2
+    call: setController2D
+    with: 
+      - type: object
+        name: player_controller_2
+  - object: world
+    call: addItem2D
+    with: 
+      - type: object
+        name: player_2
+      - type: payload
+        data:
+          row: 4
+          column: 4
+  
   - object: world
     call: print2D
   - object: this
@@ -147,12 +64,16 @@ stages:
     with: 
       - type: payload
         data: 1000
+
   # %%% ACTION PIPELINE %%%
   - pipeline: PLAYER_ACTION
+    name: player_1
     action: FORWARD
   - pipeline: PLAYER_ACTION
+    name: player_1
     action: FORWARD
   - pipeline: PLAYER_ACTION
+    name: player_1
     action: FORWARD
   - object: world
     call: print2D
@@ -164,7 +85,7 @@ stages:
 pipelines:
   - name: PLAYER_ACTION
     stages:
-      - object: player
+      - object: $name
         call: action
         with:
           - type: payload
