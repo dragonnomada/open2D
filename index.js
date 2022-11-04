@@ -1,4 +1,4 @@
-const { load } = require("./lib")
+const load = require("./lib/loader")
 
 async function main() {
     const world = await load("drafts/world.yaml")
