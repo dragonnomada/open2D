@@ -24,7 +24,7 @@ process:
   - object: player_controller
     call: log
   - object: player
-    call: addController2D
+    call: setController2D
     with: 
       - type: object
         name: player_controller
@@ -43,5 +43,17 @@ process:
     call: log
   - object: player
     call: log
+  - object: world
+    call: print2D
+  - object: player
+    call: putState
+    with:
+      - type: payload
+        data: RIGHT
+  - object: this
+    call: pause
+    with: 
+      - type: payload
+        data: 5000
   - object: world
     call: print2D
