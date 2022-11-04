@@ -15,3 +15,18 @@ process:
     call: describe
   - object: world
     call: log
+  - object: player
+    call: describe
+  - object: player
+    call: log
+  - object: player_controller
+    call: describe
+  - object: player_controller
+    call: log
+  - object: player
+    call: addController
+    with: 
+      - type: object
+        name: player_controller
+  - object: player
+    call: log
