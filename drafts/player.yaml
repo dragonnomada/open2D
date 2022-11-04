@@ -16,12 +16,12 @@ actions:
 
 symbols:
   - state: null
-    symbol: '*'
+    symbol: ' * '
   - state: UP
-    symbol: '^'
+    symbol: ' ^ '
   - state: LEFT
-    symbol: '<'
+    symbol: ' < '
   - state: DOWN
-    symbol: 'v'
+    symbol: ' v '
   - state: RIGHT
-    symbol: '>'
+    symbol: ' > '

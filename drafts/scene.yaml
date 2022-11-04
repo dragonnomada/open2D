@@ -43,3 +43,5 @@ process:
     call: log
   - object: player
     call: log
+  - object: world
+    call: print2D
