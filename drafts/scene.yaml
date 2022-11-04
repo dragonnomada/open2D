@@ -10,7 +10,7 @@ objects:
   - name: player_controller
     source: drafts/player_controller.yaml
 
-process:
+stages:
   - object: world
     call: describe
   - object: world
