@@ -1,0 +1,15 @@
+type: Logic2D
+
+name: player_1
+
+item2D: drafts/player.yaml
+controller2D: drafts/player_controller.yaml
+
+state: RIGHT
+
+index2D:
+  row: 0
+  column: 0
+
+logic: |
+  return "FORWARD"

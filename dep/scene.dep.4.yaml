@@ -1,19 +1,21 @@
 type: Scene2D
 
 objects:
-  - name: game_1
-    source: drafts/game_1.yaml
+  - name: server
+    source: drafts/server.yaml
 
 stages:
-  - object: game_1
+  - object: server
     call: setScene2D
     with:
       - type: object
         name: this
-  # - object: game_1
-  #   call: log
-  # - object: this
-  #   call: log
+  - object: server
+    call: createApp
+  - object: server
+    call: createServer
+  - object: server
+    call: start
 
 pipelines:
   # PIPE: CREATE_PLAYER

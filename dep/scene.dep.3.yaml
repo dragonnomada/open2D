@@ -1,19 +1,64 @@
 type: Scene2D
 
 objects:
-  - name: game_1
-    source: drafts/game_1.yaml
+  - name: world
+    source: drafts/world.yaml
 
 stages:
-  - object: game_1
-    call: setScene2D
-    with:
-      - type: object
-        name: this
-  # - object: game_1
-  #   call: log
-  # - object: this
-  #   call: log
+  - pipeline: CREATE_PLAYER
+    name: player_1
+    controller: player_controller_1
+    state: RIGHT
+    row: 1
+    column: 1
+
+  - pipeline: CREATE_PLAYER
+    name: player_2
+    controller: player_controller_2
+    state: UP
+    row: 4
+    column: 4
+  
+  - pipeline: CREATE_PLAYER
+    name: player_3
+    controller: player_controller_3
+    state: DOWN
+    row: 6
+    column: 6
+
+  - pipeline: PRINT_WORLD
+    delay: 1000
+
+  # %%% ACTION PIPELINE %%%
+  - pipeline: PLAYER_ACTION
+    name: player_1
+    action: FORWARD
+  - pipeline: PLAYER_ACTION
+    name: player_2
+    action: FORWARD
+  - pipeline: PLAYER_ACTION
+    name: player_3
+    action: FORWARD
+
+  - pipeline: PLAYER_ACTION
+    name: player_1
+    action: FORWARD
+  - pipeline: PLAYER_ACTION
+    name: player_2
+    action: TURN_LEFT
+  - pipeline: PLAYER_ACTION
+    name: player_3
+    action: TURN_RIGHT
+
+  - pipeline: PLAYER_ACTION
+    name: player_1
+    action: FORWARD
+  - pipeline: PLAYER_ACTION
+    name: player_2
+    action: BACKWARD
+  - pipeline: PLAYER_ACTION
+    name: player_3
+    action: FORWARD
 
 pipelines:
   # PIPE: CREATE_PLAYER

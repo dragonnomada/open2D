@@ -1,0 +1,9 @@
+type: Game2D
+
+world: 
+  name: world
+  source: drafts/world.yaml
+
+agents:
+  - name: logic_player_1
+    source: drafts/player_1.yaml
