@@ -4,17 +4,22 @@ objects:
   - name: world
     source: drafts/world.yaml
 
-  - name: player_1
-    source: drafts/player.yaml
-  - name: player_controller_1
-    source: drafts/player_controller.yaml
-  
-  - name: player_2
-    source: drafts/player.yaml
-  - name: player_controller_2
-    source: drafts/player_controller.yaml
-
 stages:
+  - object: this
+    call: createObjects
+    with:
+      - type: payload
+        data:
+          - name: player_1
+            source: drafts/player.yaml
+          - name: player_controller_1
+            source: drafts/player_controller.yaml
+          
+          - name: player_2
+            source: drafts/player.yaml
+          - name: player_controller_2
+            source: drafts/player_controller.yaml
+
   # PLAYER 1
   - pipeline: SET_PLAYER
     name: player_1
