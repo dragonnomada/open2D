@@ -5,39 +5,29 @@ objects:
     source: drafts/world.yaml
 
 stages:
-  - object: this
-    call: createObjects
-    with:
-      - type: payload
-        data:
-          - name: player_1
-            source: drafts/player.yaml
-          - name: player_controller_1
-            source: drafts/player_controller.yaml
-          
-          - name: player_2
-            source: drafts/player.yaml
-          - name: player_controller_2
-            source: drafts/player_controller.yaml
-
-  # PLAYER 1
-  - pipeline: SET_PLAYER
+  - pipeline: CREATE_PLAYER
     name: player_1
     controller: player_controller_1
     state: RIGHT
-    row: 0
-    column: 0
-  
-  # PLAYER 2
-  - pipeline: SET_PLAYER
+    row: 1
+    column: 1
+
+  - pipeline: CREATE_PLAYER
     name: player_2
     controller: player_controller_2
     state: UP
     row: 4
     column: 4
   
+  - pipeline: CREATE_PLAYER
+    name: player_3
+    controller: player_controller_3
+    state: DOWN
+    row: 6
+    column: 6
+
   - pipeline: PRINT_WORLD
-    delay: 5000
+    delay: 1000
 
   # %%% ACTION PIPELINE %%%
   - pipeline: PLAYER_ACTION
@@ -46,6 +36,9 @@ stages:
   - pipeline: PLAYER_ACTION
     name: player_2
     action: FORWARD
+  - pipeline: PLAYER_ACTION
+    name: player_3
+    action: FORWARD
 
   - pipeline: PLAYER_ACTION
     name: player_1
@@ -53,6 +46,9 @@ stages:
   - pipeline: PLAYER_ACTION
     name: player_2
     action: TURN_LEFT
+  - pipeline: PLAYER_ACTION
+    name: player_3
+    action: TURN_RIGHT
 
   - pipeline: PLAYER_ACTION
     name: player_1
@@ -60,8 +56,29 @@ stages:
   - pipeline: PLAYER_ACTION
     name: player_2
     action: BACKWARD
+  - pipeline: PLAYER_ACTION
+    name: player_3
+    action: FORWARD
 
 pipelines:
+  # PIPE: CREATE_PLAYER
+  - name: CREATE_PLAYER
+    stages:
+      - object: this
+        call: createObjects
+        with:
+          - type: payload
+            data:
+              - name: $name
+                source: drafts/player.yaml
+              - name: $controller
+                source: drafts/player_controller.yaml
+      - pipeline: SET_PLAYER
+        name: $name
+        controller: $controller
+        state: $state
+        row: $row
+        column: $column
   # PIPE: PRINT_WORLD
   - name: PRINT_WORLD
     stages:
