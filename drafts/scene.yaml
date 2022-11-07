@@ -10,6 +10,8 @@ stages:
     with:
       - type: object
         name: this
+  - object: game_1
+    call: loop
   # - object: game_1
   #   call: log
   # - object: this

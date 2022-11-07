@@ -1,16 +1,16 @@
 type: Logic2D
 
-as: player_1
+as: player_2
 
 item2D: drafts/player.yaml
 controller2D: drafts/player_controller.yaml
 
-state: RIGHT
+state: UP
 
 index2D:
-  row: 0
-  column: 0
+  row: 4
+  column: 4
 
 logic: |
-  if (!context.success) return "TURN_LEFT"
+  if (!context.success) return "TURN_RIGHT"
   return "FORWARD"

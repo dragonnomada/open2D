@@ -7,3 +7,5 @@ world:
 agents:
   - name: logic_player_1
     source: drafts/player_1.yaml
+  - name: logic_player_2
+    source: drafts/player_2.yaml
