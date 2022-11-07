@@ -12,7 +12,7 @@ actions:
   - TURN_LEFT
   - TURN_RIGHT
   - FORWARD
-  - BACKWARD
+  # - BACKWARD
 
 symbols:
   - state: null
